@@ -1,4 +1,4 @@
-//目标：解决浏览器显示中文乱码问题
+//目标：解决浏览器显示中文乱码问题 setHeader
 
 //1. 加载http模块
 const http = require('http');

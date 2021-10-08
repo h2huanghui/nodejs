@@ -14,7 +14,7 @@ server.listen(3001, () => {
 //4. 监听浏览器请求
 server.on('request', (req, res) => {
   //req对象的url属性中保存了当前请求的url地址
-  // console.log(req.url);
+  console.log("url===", req.url);
   const url = req.url;
   if (url === '/') {
     //调用fs.readFile读取index.html页面
@@ -28,6 +28,17 @@ server.on('request', (req, res) => {
     fs.readFile('../view/login.html', (err, data) => {
       if (err) {
         return res.end("not found")
+      }
+      res.end(data);
+    })
+  } else if (url.startsWith('/public')) {
+    //url= '/public/css/a.css'
+    //url= '/public/js/b.js'
+    //url= '/public/img/c.jpg'
+    console.log("public url===", url);
+    fs.readFile('../' + url, (err, data) => {
+      if (err) {
+        return res.end('not found!')
       }
       res.end(data);
     })
